@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/home.dart';
+import 'package:netflix_clone/size_config.dart';
 
 void main() {
-  runApp(const MediaQ());
+  runApp(MediaQ());
 }
 
 class MediaQ extends StatelessWidget {
@@ -10,7 +11,9 @@ class MediaQ extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyApp();
+    return MaterialApp(
+      home: MyApp(),
+    );
   }
 }
 
@@ -19,11 +22,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return MaterialApp(
       initialRoute: '/',
       routes: {
         '/': (context) => Home(),
       },
+      theme: ThemeData(
+          appBarTheme: AppBarTheme(backgroundColor: Colors.black),
+          scaffoldBackgroundColor: Colors.black),
     );
   }
 }
