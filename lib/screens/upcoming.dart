@@ -19,7 +19,7 @@ class _UpcomingState extends State<Upcoming> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                width: getProportionateScreenWidth(20.0),
+                width: getProportionateScreenWidth(10.0),
               ),
               Text(
                 'Upcoming',
