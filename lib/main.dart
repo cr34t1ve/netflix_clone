@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/screens/home.dart';
+import 'package:netflix_clone/screens/tab_page.dart';
 import 'package:netflix_clone/size_config.dart';
 
 void main() {
@@ -24,9 +25,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return MaterialApp(
-      initialRoute: '/',
+      initialRoute: '/tab',
       routes: {
         '/': (context) => Home(),
+        '/tab': (context) => TabPage()
       },
       theme: ThemeData(
           appBarTheme: AppBarTheme(backgroundColor: Colors.black),
