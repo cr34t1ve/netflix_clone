@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/home.dart';
+import 'package:netflix_clone/screens/home.dart';
 import 'package:netflix_clone/size_config.dart';
 
 void main() {
