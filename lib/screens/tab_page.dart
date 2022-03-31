@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:netflix_clone/screens/downloads.dart';
 import 'package:netflix_clone/screens/home.dart';
 import 'package:netflix_clone/screens/search.dart';

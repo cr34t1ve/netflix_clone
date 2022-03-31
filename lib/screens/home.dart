@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:netflix_clone/components/horizontal_movie_list.dart';
 import 'package:netflix_clone/size_config.dart';
 
