@@ -25,7 +25,7 @@ class SizeConfig {
         _mediaQueryData!.padding.left + _mediaQueryData!.padding.right; //0
     _safeAreaVertical =
         _mediaQueryData!.padding.top + _mediaQueryData!.padding.bottom; //79
-    safeScreenArea = screenHeight! - _mediaQueryData!.padding.bottom!;
+    safeScreenArea = screenHeight! - _mediaQueryData!.padding.bottom;
     safeBlockHorizontal = (screenWidth! - _safeAreaHorizontal!) / 100; //
     safeBlockVertical = (screenHeight! - _safeAreaVertical!) / 100; //7.33
   }

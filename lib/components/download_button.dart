@@ -15,21 +15,25 @@ class DownloadButton extends StatelessWidget {
         height: getProportionateScreenHeight(40.0),
         width: double.infinity,
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(5)),
+            color: Colors.white.withOpacity(0.2),
+            borderRadius: BorderRadius.circular(5)),
         child: Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
-                Icons.play_arrow,
-                color: Colors.black,
+                Icons.download,
+                color: Colors.white,
               ),
               SizedBox(
                 width: getProportionateScreenWidth(3.0),
               ),
               Text(
-                'Play',
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                'Download',
+                style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                    color: Colors.white),
               )
             ],
           ),

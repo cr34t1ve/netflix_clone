@@ -68,7 +68,8 @@ class _HorizontalMovieListState extends State<HorizontalMovieList> {
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: Column(
+                            child: ListView(
+                              shrinkWrap: true,
                               children: [
                                 Row(
                                   children: [
@@ -134,6 +135,153 @@ class _HorizontalMovieListState extends State<HorizontalMovieList> {
                                   height: getProportionateScreenHeight(10.0),
                                 ),
                                 DownloadButton(),
+                                SizedBox(
+                                  height: getProportionateScreenHeight(10.0),
+                                ),
+                                Container(
+                                  child: Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
+                                    maxLines: 3,
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: getProportionateScreenHeight(8.0),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Cast: dkfbiashbfiawsca',
+                                      maxLines: 1,
+                                      style: TextStyle(
+                                          fontSize: 12, color: Colors.grey),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Creator: sidfbhiwsfias',
+                                      maxLines: 1,
+                                      style: TextStyle(
+                                          fontSize: 12, color: Colors.grey),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: getProportionateScreenHeight(8.0),
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                          size: 30,
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              getProportionateScreenHeight(4.0),
+                                        ),
+                                        Text('My List',
+                                            maxLines: 1,
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.grey))
+                                      ],
+                                    ),
+                                    Column(
+                                      children: [
+                                        Icon(
+                                          Icons.thumb_up_outlined,
+                                          color: Colors.white,
+                                          size: 30,
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              getProportionateScreenHeight(4.0),
+                                        ),
+                                        Text('Rate',
+                                            maxLines: 1,
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.grey))
+                                      ],
+                                    ),
+                                    Column(
+                                      children: [
+                                        Icon(
+                                          Icons.send_outlined,
+                                          color: Colors.white,
+                                          size: 30,
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              getProportionateScreenHeight(4.0),
+                                        ),
+                                        Text('Share',
+                                            maxLines: 1,
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.grey))
+                                      ],
+                                    ),
+                                    Container(
+                                      width: 50.0,
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: getProportionateScreenHeight(15.0),
+                                ),
+                                Row(
+                                  children: [
+                                    Container(
+                                      width: 70,
+                                      height: 5,
+                                      color: Colors.red,
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: getProportionateScreenHeight(15.0),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'More Like This',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                  ],
+                                ),
+                                Container(
+                                  child: GridView.builder(
+                                    shrinkWrap: true,
+                                    itemCount: 3,
+                                    gridDelegate:
+                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount: 3),
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return Container(
+                                        decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                image:
+                                                    AssetImage(widget.image!))),
+                                        width: getProportionateScreenWidth(80),
+                                        height:
+                                            getProportionateScreenHeight(120),
+                                      );
+                                    },
+                                  ),
+                                ),
                               ],
                             ),
                           ),
