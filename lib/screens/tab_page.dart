@@ -18,14 +18,6 @@ class _TabPageState extends State<TabPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        // unselectedIconTheme: IconThemeData(
-        //   color: Colors.black
-        // ),
-        // selectedIconTheme: IconThemeData(
-        //   color: Colors.pink,
-        //   opacity: 0.5,
-        //   size: 20.0
-        // ),
         unselectedItemColor: Colors.white.withOpacity(0.6),
         selectedItemColor: Colors.white,
         unselectedLabelStyle: TextStyle(
