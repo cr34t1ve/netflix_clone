@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         '/tab': (context) => TabPage()
       },
       theme: ThemeData(
-          appBarTheme: AppBarTheme(backgroundColor: Colors.black),
+          appBarTheme: AppBarTheme(backgroundColor: Colors.transparent),
           scaffoldBackgroundColor: Colors.black),
     );
   }

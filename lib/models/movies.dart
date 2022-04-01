@@ -7,7 +7,7 @@ class Movies extends ChangeNotifier {
 
   factory Movies.fromJson(Map<String?, dynamic> parsedJson) {
     return Movies(
-        results: (parsedJson['forecast']['forecastday'] as List)
+        results: (parsedJson['results'] as List)
             .map((i) => MoviesList.fromJson(i))
             .toList());
   }
