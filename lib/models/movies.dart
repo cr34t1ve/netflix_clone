@@ -19,9 +19,15 @@ class MoviesList {
   final String? posterPath;
   final String? overview;
   final String? mediaType;
+  final String? id;
 
   MoviesList(
-      {this.adult, this.title, this.posterPath, this.overview, this.mediaType});
+      {this.adult,
+      this.title,
+      this.id,
+      this.posterPath,
+      this.overview,
+      this.mediaType});
 
   factory MoviesList.fromJson(Map<String, dynamic> parsedJson) {
     return MoviesList(
@@ -29,6 +35,7 @@ class MoviesList {
         title: parsedJson['original_title'],
         posterPath: parsedJson['poster_path'],
         overview: parsedJson['overview'],
-        mediaType: parsedJson['media_type']);
+        mediaType: parsedJson['media_type'],
+        id: parsedJson['id']);
   }
 }
