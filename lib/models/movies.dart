@@ -19,7 +19,7 @@ class MoviesList {
   final String? posterPath;
   final String? overview;
   final String? mediaType;
-  final String? id;
+  final int? id;
 
   MoviesList(
       {this.adult,
