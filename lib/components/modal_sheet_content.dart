@@ -12,14 +12,14 @@ class ModalSheetContent extends StatelessWidget {
     return Container(
       height: getProportionateScreenHeight(SizeConfig.safeScreenArea!),
       decoration: BoxDecoration(color: Colors.grey),
-      child: ListView(
-        shrinkWrap: true,
+      child: Column(
+        // shrinkWrap: true,
         children: [
-          Container(
-            height: getProportionateScreenHeight(200),
-            width: double.infinity,
-            decoration: BoxDecoration(color: Colors.grey[400]),
-          )
+          // Container(
+          //   height: getProportionateScreenHeight(200),
+          //   width: double.infinity,
+          //   decoration: BoxDecoration(color: Colors.grey[400]),
+          // )
         ],
       ),
     );

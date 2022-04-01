@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:netflix_clone/components/modal_sheet_content.dart';
 
 import '../size_config.dart';
@@ -36,10 +37,107 @@ class _HorizontalMovieListState extends State<HorizontalMovieList> {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   isScrollControlled: true,
-                  enableDrag: true,
+                  // enableDrag: true,
                   context: context,
                   builder: (context) {
-                    return ModalSheetContent();
+                    return Container(
+                      height: getProportionateScreenHeight(
+                          SizeConfig.safeScreenArea!),
+                      decoration: BoxDecoration(color: Colors.black),
+                      child: Column(
+                        children: [
+                          Container(
+                            height: getProportionateScreenHeight(200),
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    topRight: Radius.circular(20)),
+                                color: Colors.grey[400]!.withOpacity(0.8)),
+                            child: Stack(
+                              children: [
+                                Placeholder(),
+                                Positioned(child: Row())
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: getProportionateScreenHeight(5.0),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    SvgPicture.asset(
+                                      'assets/images/Netflix_2015_N_logo.svg',
+                                      height: 25.0,
+                                    ),
+                                    SizedBox(
+                                      width: getProportionateScreenWidth(5.0),
+                                    ),
+                                    Text(
+                                      'SERIES',
+                                      style: TextStyle(
+                                          letterSpacing: 3,
+                                          color: Colors.white),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: getProportionateScreenHeight(5.0),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'TITLE PLACEHOLDER',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: getProportionateScreenHeight(10.0),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      '98% match',
+                                      style: TextStyle(color: Colors.green),
+                                    ),
+                                    SizedBox(
+                                      width: getProportionateScreenWidth(5.0),
+                                    ),
+                                    Text(
+                                      '2018',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    SizedBox(
+                                      width: getProportionateScreenWidth(5.0),
+                                    ),
+                                    Text(
+                                      '1 Season',
+                                      style: TextStyle(color: Colors.white),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: getProportionateScreenHeight(8.0),
+                                ),
+                                PlayButton(),
+                                SizedBox(
+                                  height: getProportionateScreenHeight(10.0),
+                                ),
+                                DownloadButton(),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
                   });
             },
             child: Container(
@@ -50,6 +148,80 @@ class _HorizontalMovieListState extends State<HorizontalMovieList> {
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class DownloadButton extends StatelessWidget {
+  const DownloadButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        height: getProportionateScreenHeight(40.0),
+        width: double.infinity,
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(5)),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.play_arrow,
+                color: Colors.black,
+              ),
+              SizedBox(
+                width: getProportionateScreenWidth(3.0),
+              ),
+              Text(
+                'Play',
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class PlayButton extends StatelessWidget {
+  const PlayButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        height: getProportionateScreenHeight(40.0),
+        width: double.infinity,
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(5)),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.play_arrow,
+                color: Colors.black,
+              ),
+              SizedBox(
+                width: getProportionateScreenWidth(3.0),
+              ),
+              Text(
+                'Play',
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
