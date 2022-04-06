@@ -43,45 +43,44 @@ class _HorizontalMovieListState extends State<HorizontalMovieList> {
           );
         },
         itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              print('sdfdf');
-              showModalBottomSheet(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  isScrollControlled: true,
-                  // enableDrag: true,
-                  context: context,
-                  builder: (context) {
-                    return ModalContent(widget: widget);
-                  });
+          return FutureBuilder<Movies>(
+            future: widget.future,
+            builder: (context, AsyncSnapshot<Movies> snapshot) {
+              final data = snapshot.data;
+              if (widget.filter != null) {}
+              switch (snapshot.connectionState) {
+                case ConnectionState.waiting:
+                  return Container(
+                    width: getProportionateScreenWidth(80),
+                    height: getProportionateScreenHeight(120),
+                    color: Colors.pink,
+                  );
+                default:
+                  return GestureDetector(
+                    onTap: () {
+                      print('sdfdf');
+                      showModalBottomSheet(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          isScrollControlled: true,
+                          // enableDrag: true,
+                          context: context,
+                          builder: (context) {
+                            return ModalContent(
+                              inheritDetails: snapshot.data!.results![index],
+                            );
+                          });
+                    },
+                    child: Container(
+                      width: getProportionateScreenWidth(80),
+                      height: getProportionateScreenHeight(120),
+                      child: Image.network(
+                          'https://image.tmdb.org/t/p/w500/${data!.results![random.nextInt(data.results!.length)].posterPath}'),
+                    ),
+                  );
+              }
             },
-            child: Container(
-              decoration: BoxDecoration(
-                  // image: DecorationImage(image: AssetImage(widget.image!))
-                  ),
-              width: getProportionateScreenWidth(80),
-              height: getProportionateScreenHeight(120),
-              child: FutureBuilder<Movies>(
-                future: widget.future,
-                builder: (context, AsyncSnapshot<Movies> snapshot) {
-                  final data = snapshot.data;
-                  if (widget.filter != null) {}
-                  switch (snapshot.connectionState) {
-                    case ConnectionState.waiting:
-                      return Container(
-                        height: 50,
-                        width: 50,
-                        color: Colors.pink,
-                      );
-                    default:
-                      return Image.network(
-                          'https://image.tmdb.org/t/p/w500/${data!.results![random.nextInt(data.results!.length)].posterPath}');
-                  }
-                },
-              ),
-            ),
           );
         },
       ),

@@ -32,7 +32,7 @@ class MoviesList {
   factory MoviesList.fromJson(Map<String, dynamic> parsedJson) {
     return MoviesList(
         adult: parsedJson['adult'],
-        title: parsedJson['original_title'],
+        title: parsedJson['original_title'] ?? parsedJson['name'],
         posterPath: parsedJson['poster_path'],
         overview: parsedJson['overview'],
         mediaType: parsedJson['media_type'],

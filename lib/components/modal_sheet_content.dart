@@ -10,10 +10,10 @@ import '../size_config.dart';
 class ModalContent extends StatelessWidget {
   const ModalContent({
     Key? key,
-    required this.widget, this.inheritDetails
+   this.widget, required this.inheritDetails
   }) : super(key: key);
 
-  final HorizontalMovieList widget;
+  final HorizontalMovieList? widget;
   final MoviesList? inheritDetails;
 
   @override
@@ -64,7 +64,7 @@ class ModalContent extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'TITLE PLACEHOLDER',
+                      inheritDetails!.title!,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -228,10 +228,13 @@ class ModalContent extends StatelessWidget {
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
                         decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(widget.image!))),
+                            // image: DecorationImage(
+                            //     image: AssetImage(widget.image!))
+                            ),
                         width: getProportionateScreenWidth(80),
                         height: getProportionateScreenHeight(120),
+                        child: Image.network(
+                            'https://image.tmdb.org/t/p/w500/${inheritDetails!.posterPath}'),
                       );
                     },
                   ),
