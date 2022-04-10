@@ -76,6 +76,9 @@ class _HorizontalMovieListState extends State<HorizontalMovieList> {
                       width: getProportionateScreenWidth(80),
                       height: getProportionateScreenHeight(120),
                       child: Image.network(
+                          //
+                          // remove random
+                          //
                           'https://image.tmdb.org/t/p/w500/${data!.results![random.nextInt(data.results!.length)].posterPath}'),
                     ),
                   );
