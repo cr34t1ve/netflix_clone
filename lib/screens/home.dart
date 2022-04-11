@@ -46,12 +46,6 @@ class _HomeState extends State<Home> {
           Container(
             width: double.infinity,
             height: getProportionateScreenHeight(230.0),
-            // decoration: BoxDecoration(
-            //     image: DecorationImage(
-            //         image: AssetImage(
-            //           'assets/images/netflix_logo.png',
-            //         ),
-            //         fit: BoxFit.fitHeight)),
             child: Stack(
               children: [
                 Positioned.fill(
@@ -80,7 +74,7 @@ class _HomeState extends State<Home> {
                     left: 0.0,
                     right: 0.0,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
                           width: 100,
@@ -91,19 +85,6 @@ class _HomeState extends State<Home> {
                           child: Center(
                             child: Text(
                               'Play',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: 100,
-                          height: 30,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6),
-                              border: Border.all(color: Colors.white)),
-                          child: Center(
-                            child: Text(
-                              'Download',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
