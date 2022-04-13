@@ -24,6 +24,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     Random random = Random();
+    // sliver app bar
     return Scaffold(
       appBar: AppBar(
         leading: SizedBox(
