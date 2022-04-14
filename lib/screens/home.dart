@@ -13,15 +13,19 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
-  @override
-  bool get wantKeepAlive => true;
+class _HomeState extends State<Home> {
+  // @override
+  // bool get wantKeepAlive => true;
 
   Future<Movies>? _futureMovies;
+  Future<Movies>? _popularMovies;
+  Future<Movies>? _trendingTV;
   @override
   void initState() {
     super.initState();
     _futureMovies = AssistantMethods().getTrendingMovies();
+    _popularMovies = AssistantMethods().getPopularMovies();
+    _trendingTV = AssistantMethods().getTrendingTV();
   }
 
   @override
@@ -156,8 +160,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
                   ),
                 ),
                 HorizontalMovieList(
-                  future: _futureMovies,
-                  filter: 'tv',
+                  future: _trendingTV,
                   image: 'assets/images/netflix_logo.png',
                 ),
                 SizedBox(
@@ -175,8 +178,11 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
                     ],
                   ),
                 ),
+                //
+                // POPULAR
+                //
                 HorizontalMovieList(
-                  future: _futureMovies,
+                  future: _popularMovies,
                   image: 'assets/images/netflix_logo.png',
                 ),
               ]),

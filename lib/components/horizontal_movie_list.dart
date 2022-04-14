@@ -47,7 +47,6 @@ class _HorizontalMovieListState extends State<HorizontalMovieList> {
             future: widget.future,
             builder: (context, AsyncSnapshot<Movies> snapshot) {
               final data = snapshot.data;
-              if (widget.filter != null) {}
               switch (snapshot.connectionState) {
                 case ConnectionState.waiting:
                   return Container(
