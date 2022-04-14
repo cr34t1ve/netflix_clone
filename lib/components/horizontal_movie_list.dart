@@ -53,7 +53,10 @@ class _HorizontalMovieListState extends State<HorizontalMovieList> {
                   return Container(
                     width: getProportionateScreenWidth(80),
                     height: getProportionateScreenHeight(120),
-                    color: Colors.pink,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image:
+                                AssetImage('assets/images/netflix_logo.png'))),
                   );
                 default:
                   return GestureDetector(
@@ -64,7 +67,6 @@ class _HorizontalMovieListState extends State<HorizontalMovieList> {
                             borderRadius: BorderRadius.circular(20.0),
                           ),
                           isScrollControlled: true,
-                          // enableDrag: true,
                           context: context,
                           builder: (context) {
                             return ModalContent(
@@ -76,10 +78,7 @@ class _HorizontalMovieListState extends State<HorizontalMovieList> {
                       width: getProportionateScreenWidth(80),
                       height: getProportionateScreenHeight(120),
                       child: Image.network(
-                          //
-                          // remove random
-                          //
-                          'https://image.tmdb.org/t/p/w500/${data!.results![random.nextInt(data.results!.length)].posterPath}'),
+                          'https://image.tmdb.org/t/p/w500/${data!.results![index].posterPath}'),
                     ),
                   );
               }

@@ -13,7 +13,10 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
+  @override
+  bool get wantKeepAlive => true;
+
   Future<Movies>? _futureMovies;
   @override
   void initState() {
@@ -69,7 +72,7 @@ class _HomeState extends State<Home> {
               delegate: SliverChildListDelegate([
                 Container(
                   width: double.infinity,
-                  height: getProportionateScreenHeight(230.0),
+                  height: getProportionateScreenHeight(410.0),
                   child: Stack(
                     children: [
                       Positioned.fill(
@@ -80,9 +83,12 @@ class _HomeState extends State<Home> {
                             switch (snapshot.connectionState) {
                               case ConnectionState.waiting:
                                 return Container(
-                                  height: 50,
-                                  width: 50,
-                                  color: Colors.pink,
+                                  // height: getProportionateScreenHeight(inputHeight),
+                                  // width: double.infinity,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/images/netflix_logo.png'))),
                                 );
                               default:
                                 return Image.network(
