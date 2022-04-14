@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/components/modal_sheet_content.dart';
+import 'package:netflix_clone/helpers/assistant_methods.dart';
+import 'package:netflix_clone/models/movies.dart';
 import 'package:netflix_clone/size_config.dart';
 
 class Upcoming extends StatefulWidget {
@@ -9,6 +12,14 @@ class Upcoming extends StatefulWidget {
 }
 
 class _UpcomingState extends State<Upcoming> {
+  Future<Movies>? _futureMovies;
+
+  @override
+  void initState() {
+    super.initState();
+    _futureMovies = AssistantMethods().getUpcomingMovies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,17 +45,52 @@ class _UpcomingState extends State<Upcoming> {
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
-                return ListTile(
-                  leading: Container(
-                      height: 30.0, width: 30.0, child: Placeholder()),
-                  title: Text(
-                    'Title',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  trailing: Icon(
-                    Icons.play_circle_outline_outlined,
-                    color: Colors.white,
-                  ),
+                return FutureBuilder<Movies>(
+                  future: _futureMovies,
+                  builder: (context, AsyncSnapshot<Movies> snapshot) {
+                    final data = snapshot.data;
+                    switch (snapshot.connectionState) {
+                      case ConnectionState.waiting:
+                        return Container(
+                          height: 50,
+                          width: 50,
+                          color: Colors.pink,
+                        );
+                      default:
+                        return ListTile(
+                          onTap: () {
+                            showModalBottomSheet(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                isScrollControlled: true,
+                                context: context,
+                                builder: (context) {
+                                  return ModalContent(
+                                    inheritDetails:
+                                        snapshot.data!.results![index],
+                                  );
+                                });
+                          },
+                          leading: Container(
+                              height: 50.0,
+                              width: 50.0,
+                              child: Image.network(
+                                'https://image.tmdb.org/t/p/w500/${data!.results![index].posterPath}',
+                                fit: BoxFit.fitWidth,
+                              )),
+                          title: Text(
+                            data.results![index].title!,
+                            overflow: TextOverflow.fade,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          trailing: Icon(
+                            Icons.play_circle_outline_outlined,
+                            color: Colors.white,
+                          ),
+                        );
+                    }
+                  },
                 );
               },
               separatorBuilder: (context, index) {

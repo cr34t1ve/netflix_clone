@@ -33,7 +33,6 @@ class _HomeState extends State<Home> {
               floating: true,
               expandedHeight: 50,
               automaticallyImplyLeading: false,
-              backgroundColor: Colors.transparent,
               flexibleSpace: FlexibleSpaceBar(
                 title: Padding(
                   padding: EdgeInsets.symmetric(
