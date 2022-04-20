@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/components/content_bar.dart';
 import 'package:netflix_clone/components/horizontal_movie_list.dart';
 import 'package:netflix_clone/helpers/assistant_methods.dart';
 import 'package:netflix_clone/models/movies.dart';
@@ -14,14 +15,21 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  // @override
-  // bool get wantKeepAlive => true;
+  double _scrollOffset = 0.0;
+  ScrollController _scrollController =
+      ScrollController(initialScrollOffset: 0.0);
 
   Future<Movies>? _futureMovies;
   Future<Movies>? _popularMovies;
   Future<Movies>? _trendingTV;
   @override
   void initState() {
+    _scrollController = ScrollController()
+      ..addListener(() {
+        setState(() {
+          _scrollOffset = _scrollController.offset;
+        });
+      });
     super.initState();
     _futureMovies = AssistantMethods().getTrendingMovies();
     _popularMovies = AssistantMethods().getPopularMovies();
@@ -29,49 +37,61 @@ class _HomeState extends State<Home> {
   }
 
   @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     Random random = Random();
     return Scaffold(
         extendBodyBehindAppBar: true,
+        appBar: PreferredSize(
+          preferredSize: Size(SizeConfig.screenWidth!, 70.0),
+          child: ContentBar(
+            scrollOffset: _scrollOffset,
+          ),
+        ),
         body: CustomScrollView(
           slivers: [
-            SliverAppBar(
-              snap: true,
-              floating: true,
-              expandedHeight: 50,
-              automaticallyImplyLeading: false,
-              flexibleSpace: FlexibleSpaceBar(
-                title: Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: getProportionateScreenWidth(25)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        height: 35.0,
-                        child: Image.asset('assets/images/netflix_logo.png'),
-                      ),
-                      Row(
-                        children: [
-                          IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.ondemand_video_sharp,
-                                color: Colors.white,
-                              )),
-                          IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.person_outline,
-                                color: Colors.white,
-                              ))
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            // SliverAppBar(
+            //   snap: true,
+            //   floating: true,
+            //   expandedHeight: 50,
+            //   automaticallyImplyLeading: false,
+            //   flexibleSpace: FlexibleSpaceBar(
+            //     title: Padding(
+            //       padding: EdgeInsets.symmetric(
+            //           horizontal: getProportionateScreenWidth(25)),
+            //       child: Row(
+            //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //         children: [
+            //           SizedBox(
+            //             height: 35.0,
+            //             child: Image.asset('assets/images/netflix_logo.png'),
+            //           ),
+            //           Row(
+            //             children: [
+            //               IconButton(
+            //                   onPressed: () {},
+            //                   icon: const Icon(
+            //                     Icons.ondemand_video_sharp,
+            //                     color: Colors.white,
+            //                   )),
+            //               IconButton(
+            //                   onPressed: () {},
+            //                   icon: const Icon(
+            //                     Icons.person_outline,
+            //                     color: Colors.white,
+            //                   ))
+            //             ],
+            //           ),
+            //         ],
+            //       ),
+            //     ),
+            //   ),
+            // ),
             SliverList(
               delegate: SliverChildListDelegate([
                 Container(
@@ -181,6 +201,34 @@ class _HomeState extends State<Home> {
                 //
                 // POPULAR
                 //
+                HorizontalMovieList(
+                  future: _popularMovies,
+                  image: 'assets/images/netflix_logo.png',
+                ),
+                HorizontalMovieList(
+                  future: _popularMovies,
+                  image: 'assets/images/netflix_logo.png',
+                ),
+                HorizontalMovieList(
+                  future: _popularMovies,
+                  image: 'assets/images/netflix_logo.png',
+                ),
+                HorizontalMovieList(
+                  future: _popularMovies,
+                  image: 'assets/images/netflix_logo.png',
+                ),
+                HorizontalMovieList(
+                  future: _popularMovies,
+                  image: 'assets/images/netflix_logo.png',
+                ),
+                HorizontalMovieList(
+                  future: _popularMovies,
+                  image: 'assets/images/netflix_logo.png',
+                ),
+                HorizontalMovieList(
+                  future: _popularMovies,
+                  image: 'assets/images/netflix_logo.png',
+                ),
                 HorizontalMovieList(
                   future: _popularMovies,
                   image: 'assets/images/netflix_logo.png',
